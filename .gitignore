@@ -1,0 +1,6 @@
+build
+dist
+soumi.egg-info
+LICENSE.txt
+soumi/__pycache__/__init__.cpython-37.pyc
+soumi/__pycache__/soumifirst.cpython-37.pyc
