@@ -247,3 +247,76 @@ def dectobin(x):
         x = x//2
     ans = str(x) + ans
     return ans
+
+
+def opcipher(s):
+    """"Simple cipher that takes a string as input. Spaces allowed. output string has all lowercase letters. using the functio twice deciphers it."""
+    a = 'abcdefghijklmnopqrstuvwxyz'
+    r = ''
+    for x in s:
+        x = x.lower()
+        if(x!=' '):
+            x = a[25-a.index(x)]
+        r+=x
+    return r
+
+class LinearRegression:
+    """Simple Class for Linear Regression. One feature input and output."""
+    def __init__(self,X,Y):
+        self.X = X
+        self.Y = Y
+        self.learned = 0
+    def learn(self,epoch,learning_rate=0.01):
+        """
+        epoch: No. of Iterations 
+        learning_rate: How fast the algorithm should learn(default value is 0.01)
+        """
+        self.learned = 1
+        a0 = 1
+        a1 = 1
+        self.l = len(self.X)
+        r=0
+        self.cost = []
+        self.epochs = []
+        while(r<epoch):
+            self.Y_pred=[]
+            for x in self.X:
+                self.Y_pred.append(a0+a1*x)
+                c1 = c2 = 0
+            for i in range(self.l):
+                c1 += (self.Y_pred[i] - self.Y[i])
+                c2 += (self.Y_pred[i]-self.Y[i])*self.X[i]
+            self.cost.append(round(c1**2/self.l,4))
+            c1 = c1*2*learning_rate/self.l;
+            c2 = c2*2*learning_rate/self.l;
+            a0 = a0 - c1
+            a1 = a1 - c2  
+            self.epochs.append(r)
+            r+=1
+        self.A0 = a0
+        self.A1 = a1
+    def predict(self,x):
+        "Used to predict after the model has learned from the data"
+        if(self.learned==1):    
+            self.y = self.A0 + x*self.A1
+        else:
+            return Exception("Model has not been fitted.")
+        return round(self.y,6)
+    def error(self):
+        """
+        Returns the MSRE of the algorithm
+        """
+        e = 0
+        for i in range(self.l):
+            e += (self.Y_pred[i] - self.Y[i])**2
+        e/=self.l 
+        e=e**0.5
+        return round(e,4)
+    def draw(self):
+        """
+        Plots the number of epochs vs cost/error.
+
+        """
+        import matplotlib.pyplot as plt
+        plt.plot(self.epochs,self.cost)
+       

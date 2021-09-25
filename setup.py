@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="soumi",
-    version="1.0.9",
+    version="1.1.1",
     author="Soumitra Mandal",
     author_email="soumitramandal1999@gmail.com",
     description="A small package to help with simple mathematical operations",
@@ -25,4 +25,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    install_requires=[
+          'matplotlib',
+          ],
 )
