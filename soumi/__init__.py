@@ -1,6 +1,9 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 """
 
 @author: Soumitra
 """
-name = 'soumi'
-__version__="1.1.1"
+
+NAME = 'soumi'
+__version__ = '1.1.1'
